@@ -8,9 +8,9 @@ Command line interface for SDLCPilot, a Software Development Life Cycle manageme
 ## Install
 
 1. If either `npm -v` or `node -v` are not found, see ['Install `node` and `npm`'](#install-node-and-npm).
-2. Install 'sdlcpilot-cli' and 'comply-server'. (These package names will be updated shortly.)
+2. Install 'sdlcpilot-cli' and '@sdlcforge/core-server'. (These package names will be updated shortly.)
    ```bash
-   npm i -g sdlcpilot-cli comply-server
+   npm i -g sdlcpilot-cli @sdlcforge/core-server
    ```
 3. Run:
    ```bash
