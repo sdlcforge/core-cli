@@ -20,16 +20,6 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: 'Actionable remediation surfaced by this spike: replace shelljs with raw node:child_process in liq-projects''s create-lib.mjs, rename-lib.mjs, publish-lib.mjs, do-npm-publish.mjs, and @liquid-labs/shell-toolkit''s try-exec*.mjs. Out of this task''s scope (liq-projects is read-only reference material); belongs to whichever later phase builds the actual packaging pipeline.'
-    - title: 'Bun spike: fix misleading node shebang'
-      id: WYlk
-      date: "2026-08-08"
-      tags:
-        - plan/phase:cli-foundation
-        - plan/slug:modernization-foundation
-        - type:bug
-        - priority:unspecified
-        - effort:unspecified
-      text: spike/bun-compat/harness.mjs and harness-raw-childprocess.mjs both carry `#!/usr/bin/env node` shebangs despite existing specifically to validate Bun-specific compiled-binary behavior. If either were ever chmod +x'd and run directly, it would silently run under Node instead of Bun, invalidating the differential result with no error. Low real-world risk today (files are mode 100644, non-executable, and the README correctly instructs `bun run`/`bun build --compile`), but worth changing to `#!/usr/bin/env bun` (or dropping the shebang) to remove the latent footgun for future re-validation.
     - title: 'Bun spike: add SIGINT cleanup for scratch dir'
       id: u0Fw
       date: "2026-08-08"
