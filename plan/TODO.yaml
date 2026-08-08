@@ -18,7 +18,7 @@ phases:
             branch: plan/modernization-foundation-01-001
             commit:
                 - de27e13
-            merge: null
+            merge: 001c97d
         - number: 2
           slug: bun-compatibility-spike
           title: Bun Compatibility Spike
