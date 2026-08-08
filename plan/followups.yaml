@@ -30,3 +30,13 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: The spike did not test signal handling (SIGTERM/SIGINT delivery to a spawned async subprocess), named in the task's list of quirks to check but dropped once the blocking shelljs finding emerged. Worth a follow-up spike check before the actual packaging phase.
+    - title: Actionable remediation surfaced by this spike
+      id: hwbY
+      date: "2026-08-08"
+      tags:
+        - type:ambiguity
+        - plan/phase:cli-foundation
+        - plan/slug:modernization-foundation
+        - priority:unspecified
+        - effort:unspecified
+      text: 'Actionable remediation surfaced by this spike: replace shelljs with raw node:child_process in liq-projects''s create-lib.mjs, rename-lib.mjs, publish-lib.mjs, do-npm-publish.mjs, and @liquid-labs/shell-toolkit''s try-exec*.mjs. Out of this task''s scope (liq-projects is read-only reference material); belongs to whichever later phase builds the actual packaging pipeline.'
