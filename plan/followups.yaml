@@ -20,13 +20,3 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: 'Actionable remediation surfaced by this spike: replace shelljs with raw node:child_process in liq-projects''s create-lib.mjs, rename-lib.mjs, publish-lib.mjs, do-npm-publish.mjs, and @liquid-labs/shell-toolkit''s try-exec*.mjs. Out of this task''s scope (liq-projects is read-only reference material); belongs to whichever later phase builds the actual packaging pipeline.'
-    - title: 'Bun spike: add SIGINT cleanup for scratch dir'
-      id: u0Fw
-      date: "2026-08-08"
-      tags:
-        - plan/phase:cli-foundation
-        - plan/slug:modernization-foundation
-        - type:bug
-        - priority:unspecified
-        - effort:unspecified
-      text: spike/bun-compat/harness.mjs and harness-raw-childprocess.mjs clean up their mkdtempSync scratch directory in a try/finally block, which covers normal completion and thrown exceptions, but neither registers a SIGINT/SIGTERM handler — a manual Ctrl+C mid-run (plausible, since one check does a real network fetch and another retries git push up to 5 times) bypasses the finally block and leaves the scratch directory on disk. Worth adding a process signal handler that runs the same rmSync cleanup, if this harness is run interactively again for future re-validation.
