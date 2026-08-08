@@ -20,3 +20,13 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: liq-projects (read-only reference repo) has pre-existing uncommitted local WIP unrelated to this task — noted for visibility, already known to and now resolved by the manager (committed separately).
+    - title: The spike did not test signal handling (SIGTE
+      id: MhCu
+      date: "2026-08-08"
+      tags:
+        - type:ambiguity
+        - plan/phase:cli-foundation
+        - plan/slug:modernization-foundation
+        - priority:unspecified
+        - effort:unspecified
+      text: The spike did not test signal handling (SIGTERM/SIGINT delivery to a spawned async subprocess), named in the task's list of quirks to check but dropped once the blocking shelljs finding emerged. Worth a follow-up spike check before the actual packaging phase.
