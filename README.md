@@ -1,5 +1,7 @@
 # sdlcforge cli
 
+**Note:** This CLI is being consolidated into a single self-contained binary as part of an in-progress SDLCForge modernization. See the project's `plan/` directory for details on this migration effort.
+
 Command line interface for SDLCPilot, a Software Development Life Cycle management tool. Currently support GitHub node projects.
 
 - [Install](#install)
@@ -8,7 +10,7 @@ Command line interface for SDLCPilot, a Software Development Life Cycle manageme
 ## Install
 
 1. If either `npm -v` or `node -v` are not found, see ['Install `node` and `npm`'](#install-node-and-npm).
-2. Install 'sdlcpilot-cli' and '@sdlcforge/core-server'. (These package names will be updated shortly.)
+2. Install 'sdlcpilot-cli' and '@sdlcforge/core-server':
    ```bash
    npm i -g sdlcpilot-cli @sdlcforge/core-server
    ```
@@ -68,9 +70,9 @@ nvm use node
       ```
       sdlc work start -- issueTitle='Initial implementation' issueOverview='Implement basic functions' issueDeliverables="do X;;do Y"
       ```
-5. Create a minimal project (TODO: I think this may be automated somewhere...):
+5. Create a minimal project:
    ```
-   mkdkir src
+   mkdir src
    echo -e "console.log('Hello world!')\n" > src/index.mjs
    ```
 6. Setup development cycle stuff (if creating a Javascript based project):
