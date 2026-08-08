@@ -23,7 +23,7 @@ phases:
           slug: bun-compatibility-spike
           title: Bun Compatibility Spike
           path: phase-01-cli-foundation/002-bun-compatibility-spike.md
-          done: false
+          done: true
           tier: sonnet-high
           digest: 'Built and ran a Bun child_process compatibility spike against liq-projects'' real projects-create shell-out pattern. Conditional go: Bun''s own child_process primitives work correctly inside a bun build --compile standalone binary for git/hub/gh/npm. However shelljs itself (which the codebase''s GitHub-integration shell-outs depend on) fails to load inside any bundled Bun output due to a dynamically-computed require() that Bun''s bundler can''t statically resolve. Secondary non-blocking finding: Bun''s execSync/exec don''t auto-inherit post-startup process.env mutations. Recommended path: replace shelljs with raw node:child_process in liq-projects before the later packaging phase, rather than abandoning bun build --compile. All scratch artifacts cleaned up; liq-projects was read-only throughout.'
           git:
