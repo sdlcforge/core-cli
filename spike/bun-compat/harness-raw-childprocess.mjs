@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 /**
  * Differential-diagnosis variant of harness.mjs: identical git/hub/gh/env/exit-code
  * checks, but using raw `node:child_process` (execSync/exec) directly instead of
@@ -20,6 +20,26 @@ const record = (name, status, detail) => {
 const scratchRoot = mkdtempSync(fsPath.join(tmpdir(), 'sdlcpilot-bun-spike-raw-'))
 const stagingDir = fsPath.join(scratchRoot, 'staging-project')
 const bareRemoteDir = fsPath.join(scratchRoot, 'mock-origin.git')
+
+// --- cleanup helper, shared between the normal try/finally path below and the
+//     SIGINT/SIGTERM handlers, so a manual Ctrl+C mid-run still removes the
+//     scratch directory instead of bypassing the finally block. ---
+const cleanupScratchRoot = () => {
+  try {
+    rmSync(scratchRoot, { recursive : true, force : true })
+  }
+  catch (e) {
+    process.stderr.write(`WARNING: cleanup failed: ${e.message}\n`)
+  }
+}
+
+const handleTerminationSignal = (signal) => {
+  process.stderr.write(`received ${signal}, cleaning up scratch root before exit\n`)
+  cleanupScratchRoot()
+  process.exit(1)
+}
+process.on('SIGINT', handleTerminationSignal)
+process.on('SIGTERM', handleTerminationSignal)
 
 try {
   try {
@@ -116,12 +136,7 @@ try {
   }
 }
 finally {
-  try {
-    rmSync(scratchRoot, { recursive : true, force : true })
-  }
-  catch (e) {
-    process.stderr.write(`WARNING: cleanup failed: ${e.message}\n`)
-  }
+  cleanupScratchRoot()
 }
 
 const failed = results.filter((r) => r.status === 'fail')
