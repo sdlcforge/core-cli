@@ -4,3 +4,6 @@
 /.yalc
 /dist
 /test-staging
+/spike/bun-compat/harness-bin
+/spike/bun-compat/harness-raw-bin
+/spike/bun-compat/harness-external-bin
