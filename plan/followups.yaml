@@ -20,16 +20,6 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: 'Actionable remediation surfaced by this spike: replace shelljs with raw node:child_process in liq-projects''s create-lib.mjs, rename-lib.mjs, publish-lib.mjs, do-npm-publish.mjs, and @liquid-labs/shell-toolkit''s try-exec*.mjs. Out of this task''s scope (liq-projects is read-only reference material); belongs to whichever later phase builds the actual packaging pipeline.'
-    - title: Document harness-external-bin gitignore entry
-      id: jnPm
-      date: "2026-08-08"
-      tags:
-        - plan/phase:cli-foundation
-        - plan/slug:modernization-foundation
-        - type:documentation
-        - priority:unspecified
-        - effort:unspecified
-      text: .gitignore adds a `harness-external-bin` entry (spike/bun-compat/) with no corresponding documentation of which build command produces it (unlike the two sibling entries, which map clearly to harness.mjs and harness-raw-childprocess.mjs). Likely the `--external shelljs` compile experiment mentioned in plan/resources/bun-compatibility-spike-findings.md's Finding 1, but that experiment's output filename is never stated. Either document the exact build command in the findings doc, or drop the orphaned gitignore entry.
     - title: 'Bun spike: fix misleading node shebang'
       id: WYlk
       date: "2026-08-08"
