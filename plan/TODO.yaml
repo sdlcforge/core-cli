@@ -5,6 +5,7 @@ phases:
     - number: 1
       slug: cli-foundation
       title: CLI Documentation Stopgap and Bun Packaging Spike
+      diff_base: 5bc89ef3ad0318474b0d6676cbe7a6039dc87ab0
       tasks:
         - number: 1
           slug: documentation-stopgap
