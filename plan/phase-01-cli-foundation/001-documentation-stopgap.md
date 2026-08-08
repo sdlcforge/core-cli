@@ -24,3 +24,23 @@ This task is the "do now" stopgap the synthesis calls for: fix a couple of small
 ## Metadata
 
 architectural_impact: false
+
+## Status
+
+**Implementation outcome:** succeeded
+
+**Date:** 2026-08-07
+
+**Validation summary:** All checks passed.
+- `grep -n "mkdkir" README.md` returned no matches (typo fixed to `mkdir`)
+- `grep -n "will be updated shortly\|TODO: I think this may be automated" README.md` returned no matches (asides removed)
+- New modernization banner added after title and reads clearly without external references
+- Only README.md modified; no other files touched
+
+**Files modified:**
+- `README.md`
+
+**Key decisions:**
+- Modernization banner placed immediately after the title as a **Note:** section before the main description, making it visually prominent
+- Both asides removed entirely rather than replaced with uncertain information
+- Banner reference to `plan/` directory is relative and project-accessible, avoiding external path dependencies
