@@ -11,7 +11,7 @@ phases:
           slug: documentation-stopgap
           title: Documentation Stopgap
           path: phase-01-cli-foundation/001-documentation-stopgap.md
-          done: false
+          done: true
           tier: haiku-low
           digest: 'Fixed three documentation issues in README.md: corrected mkdkir typo, removed stale package-name aside, removed unresolved TODO aside. Added a modernization banner after the title pointing at plan/. All four validation checks passed; only README.md was modified as required.'
           git:
