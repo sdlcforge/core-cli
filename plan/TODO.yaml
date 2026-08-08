@@ -5,4 +5,14 @@ phases:
     - number: 1
       slug: cli-foundation
       title: CLI Documentation Stopgap and Bun Packaging Spike
-      tasks: []
+      tasks:
+        - number: 1
+          slug: documentation-stopgap
+          title: Documentation Stopgap
+          path: phase-01-cli-foundation/001-documentation-stopgap.md
+          done: false
+          tier: haiku-low
+          git:
+            branch: null
+            commit: []
+            merge: null
