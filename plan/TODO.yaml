@@ -16,3 +16,13 @@ phases:
             branch: null
             commit: []
             merge: null
+        - number: 2
+          slug: bun-compatibility-spike
+          title: Bun Compatibility Spike
+          path: phase-01-cli-foundation/002-bun-compatibility-spike.md
+          done: false
+          tier: sonnet-high
+          git:
+            branch: null
+            commit: []
+            merge: null
