@@ -13,6 +13,7 @@ phases:
           path: phase-01-cli-foundation/001-documentation-stopgap.md
           done: false
           tier: haiku-low
+          digest: 'Fixed three documentation issues in README.md: corrected mkdkir typo, removed stale package-name aside, removed unresolved TODO aside. Added a modernization banner after the title pointing at plan/. All four validation checks passed; only README.md was modified as required.'
           git:
             branch: plan/modernization-foundation-01-001
             commit:
