@@ -104,11 +104,15 @@ Reproduced identically:
   <bundled-output>.js`): fails identically — this is a Bun **bundler** limitation,
   not something specific to standalone-executable compilation.
 - `--external shelljs` (excluding it from the compile bundle, relying on runtime
-  module resolution instead): **also fails** — `error: Cannot find package
-  'shelljs' from '/$bunfs/root/...'` — a standalone compiled binary has no real
-  on-disk location to resolve `require('shelljs')` against unless a real
-  `node_modules` is shipped alongside it, which defeats the point of a
-  self-contained single binary.
+  module resolution instead), run as
+  `bun build --compile --external shelljs --outfile harness-external-bin harness.mjs`
+  (mirrors the plain `bun build --compile --outfile harness-bin harness.mjs`
+  invocation above, with the added flag; the resulting `harness-external-bin`
+  binary is the `.gitignore` entry of the same name): **also fails** — `error:
+  Cannot find package 'shelljs' from '/$bunfs/root/...'` — a standalone compiled
+  binary has no real on-disk location to resolve `require('shelljs')` against
+  unless a real `node_modules` is shipped alongside it, which defeats the point of
+  a self-contained single binary.
 - Only unbundled `bun run harness.mjs` (interpreted directly from source, resolving
   `require()` against the real on-disk `node_modules`) works.
 
