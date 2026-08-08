@@ -15,7 +15,8 @@ phases:
           tier: haiku-low
           git:
             branch: plan/modernization-foundation-01-001
-            commit: []
+            commit:
+                - de27e13
             merge: null
         - number: 2
           slug: bun-compatibility-spike
