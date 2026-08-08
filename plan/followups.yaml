@@ -10,3 +10,13 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: Findings report was written to the plan worktree (plan/resources/bun-compatibility-spike-findings.md) per the task doc's explicit instruction and the plan_worktree_path argument, rather than the task worktree — manager confirms this is the correct, intended pattern for this dispatch shape.
+    - title: liq-projects (read-only reference repo) has p
+      id: j6jz
+      date: "2026-08-08"
+      tags:
+        - type:ambiguity
+        - plan/phase:cli-foundation
+        - plan/slug:modernization-foundation
+        - priority:unspecified
+        - effort:unspecified
+      text: liq-projects (read-only reference repo) has pre-existing uncommitted local WIP unrelated to this task — noted for visibility, already known to and now resolved by the manager (committed separately).
