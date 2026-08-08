@@ -32,3 +32,48 @@ This task is a time-boxed spike (~1 day budget), not production packaging work. 
 ## Metadata
 
 architectural_impact: false
+
+## Status
+
+**Outcome: succeeded.** 2026-08-07.
+
+Spike harness at `spike/bun-compat/` (source-only; kept and marked spike-only per
+its `README.md` rather than removed — see rationale there). Findings written to
+`plan/resources/bun-compatibility-spike-findings.md` **on the plan worktree**
+(`/Users/zane/playground/liquid-labs/sdlcpilot-cli/worktrees/plan/modernization-foundation`),
+per this task's own instruction to place the report "in this repo's plan
+worktree" and the `plan_worktree_path` argument supplied for that purpose — not
+inside this task worktree's own `plan/` directory, which per the standard
+`implement-task` procedure may not carry any file besides this assigned task
+document. See that report for full detail; summary:
+
+- **Conditional go** on `bun build --compile` as the eventual packaging strategy:
+  Bun's own `child_process` (`execSync`/`exec`/`execFileSync`) works correctly for
+  spawning `git`/`hub`/`gh`/`npm` from inside a compiled standalone binary — stdio
+  capture, exit codes, and PATH resolution all matched Node.
+- **Blocking finding**: `shelljs` (used throughout `liq-projects`'
+  GitHub-integration shell-outs, directly and via `@liquid-labs/shell-toolkit`)
+  fails to even load inside any bundled Bun output (`bun build`, with or without
+  `--compile`) — its eager, dynamically-computed `require('./src/' + command)`
+  command loading can't be statically resolved by Bun's bundler. Only unbundled
+  `bun run` against a real on-disk `node_modules` works.
+- **Secondary finding**: Bun's `execSync`/`exec` do not auto-inherit `process.env`
+  mutations made after process startup unless `env` is passed explicitly (Node
+  does). Does not currently bite `shelljs` (which already passes `env:
+  process.env` explicitly) but is worth knowing for any future raw
+  `child_process` code.
+- Recommended path forward: replace `shelljs` calls with raw `node:child_process`
+  in the GitHub-integration shell-out path before the later packaging phase
+  compiles that code; the packaging strategy itself does not need to change.
+
+No unrelated repo modified; `liq-projects` was read-only reference material. No
+real GitHub repos/remotes were created (mocked via local bare repos, per the
+task's own allowance) — nothing to clean up there. All harness scratch
+directories were removed by the harness itself and verified empty after the final
+run.
+
+Affected/added files: `spike/bun-compat/harness.mjs`,
+`spike/bun-compat/harness-raw-childprocess.mjs`, `spike/bun-compat/README.md`,
+`.gitignore` (spike compiled-binary entries), this task document. Findings report
+committed separately on the plan worktree
+(`plan/resources/bun-compatibility-spike-findings.md`).
