@@ -1,15 +1,5 @@
 version: 2
 items:
-    - title: liq-projects (read-only reference repo) has p
-      id: j6jz
-      date: "2026-08-08"
-      tags:
-        - type:ambiguity
-        - plan/phase:cli-foundation
-        - plan/slug:modernization-foundation
-        - priority:unspecified
-        - effort:unspecified
-      text: liq-projects (read-only reference repo) has pre-existing uncommitted local WIP unrelated to this task — noted for visibility, already known to and now resolved by the manager (committed separately).
     - title: The spike did not test signal handling (SIGTE
       id: MhCu
       date: "2026-08-08"
