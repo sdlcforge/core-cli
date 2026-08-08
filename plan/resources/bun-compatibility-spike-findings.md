@@ -127,6 +127,8 @@ compiled binary:
 - `git init`, `git add`/`commit`, `git push --set-upstream` (including spawning
   `git` as an external binary via bare-name PATH resolution) — all correct.
 - Spawning the real `hub` and `gh` binaries and capturing their stdout — correct.
+- `npm init -y` (mirroring `create-lib.mjs`'s own `git init --quiet . && npm init
+  -y > /dev/null` staging-directory setup step) — correct.
 - Async `child_process.exec` — correct.
 - Non-zero exit code + stderr capture on a deliberately failing command — correct.
 
