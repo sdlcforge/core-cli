@@ -36,3 +36,13 @@ phases:
             branch: null
             commit: []
             merge: null
+        - number: 4
+          slug: bump-version-rebuild-and-publish
+          title: Bump Version, Rebuild, and Publish to npm
+          path: phase-01-rename-relocation/004-bump-version-rebuild-and-publish.md
+          done: false
+          tier: sonnet-med
+          git:
+            branch: null
+            commit: []
+            merge: null
