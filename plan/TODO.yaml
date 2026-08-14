@@ -16,3 +16,13 @@ phases:
             branch: null
             commit: []
             merge: null
+        - number: 2
+          slug: update-package-identity-and-urls
+          title: Update Package Identity and Repository URLs
+          path: phase-01-rename-relocation/002-update-package-identity-and-urls.md
+          done: false
+          tier: sonnet-low
+          git:
+            branch: null
+            commit: []
+            merge: null
