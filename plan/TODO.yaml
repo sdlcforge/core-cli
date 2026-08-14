@@ -26,3 +26,13 @@ phases:
             branch: null
             commit: []
             merge: null
+        - number: 3
+          slug: rename-build-artifacts-and-fix-self-references
+          title: Rename Build Artifacts and Fix Self-References
+          path: phase-01-rename-relocation/003-rename-build-artifacts-and-fix-self-references.md
+          done: false
+          tier: sonnet-med
+          git:
+            branch: null
+            commit: []
+            merge: null
