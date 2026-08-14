@@ -20,3 +20,11 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: 'Actionable remediation surfaced by this spike: replace shelljs with raw node:child_process in liq-projects''s create-lib.mjs, rename-lib.mjs, publish-lib.mjs, do-npm-publish.mjs, and @liquid-labs/shell-toolkit''s try-exec*.mjs. Out of this task''s scope (liq-projects is read-only reference material); belongs to whichever later phase builds the actual packaging pipeline.'
+    - title: 'Stale plugable-express dep: version bug fix'
+      id: l9ql
+      date: "2026-08-14"
+      tags:
+        - type:bug
+        - priority:unspecified
+        - effort:unspecified
+      text: '`sdlc server version`''s CLI-formatted output shows `plugable-express: undefined` in production because bun.lock pins the transitive dependency @liquid-labs/plugable-express@1.0.0-alpha.55 (pulled via @liquid-labs/plugable-express-cli). That version has the versionInfo.server-vs-versionInfo[''plugable-express''] key bug in src/handlers/server/version.js. The bug is already fixed upstream at pluggable-express commit 1367c9f, published as 1.0.0-alpha.57. sdlcpilot-cli itself has no formatter code for this — it''s a pure passthrough to plugable-express-cli''s startCLI(). Fix: once a plugable-express-cli release built against plugable-express>=1.0.0-alpha.57 is available (or the local yalc chain is updated), bump the dependency here and regenerate bun.lock. No sdlcpilot-cli source change needed.'
