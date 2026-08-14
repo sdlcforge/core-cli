@@ -51,3 +51,28 @@ This task re-runs that sweep as a definitive, point-of-execution check — not a
 - `plan/manifest.yaml` (project root) — plan-group bookkeeping.
 - `package.json` — the `@liquid-labs/plugable-defaults` dependency spec (`^1.0.0-alpha.4`).
 - `src/sdlcpilot-cli.mjs` — the sole import site of `@liquid-labs/plugable-defaults` in this repo.
+
+## Findings
+
+Re-swept on 2026-08-14, no genuine double-g references or naming mismatches found, consistent with the planning-time investigation.
+
+All five Requirements-step-1 grep invocations were re-run from the worktree root (`git grep -ni 'pluggable' -- .`, `git grep -ni 'liquid-labs/pluggable' -- .`, the broader untracked-inclusive `pluggable` grep, the `PLUG(G)?ABLE_[A-Z_]*` grep, and the literal `plugable-defaults` grep). Every match was classified:
+
+- **Bookkeeping artifact** — `plan/TODO.yaml:1` (`slug: pluggable-defaults-rename`, this plan-group's own slug). Expected, left unchanged.
+- **Out-of-scope, unrelated `pluggable-express` mention** — `plan/followups.yaml:30` (the `l9ql` follow-up item) and `plan/plan-summary-modernization-foundation.md:5` (the already-merged historical sentence). Both concern the separate `pluggable-express`/`@liquid-labs/plugable-express` package, covered by its own `pluggable-express-rename` plan-group. Left unchanged, per instructions — this task does not decide whether `l9ql` is resolved.
+- **This plan-group's own planning prose** — `plan/overview.md`, `plan/notes/double-g-sweep.md`, and this task document itself all use the double-g spelling "pluggable-defaults"/"pluggable" when narrating the rename effort's own name and history (plan-group slug, "pluggable-defaults" as the thing being renamed *from*). This is expected meta-discussion about the rename, not a live content reference to fix, and mirrors what the planning-time investigation itself found and produced. Left unchanged.
+- **Dependency spec and import site (correct, single-g)** — `package.json:34` and `bun.lock` declare `@liquid-labs/plugable-defaults: ^1.0.0-alpha.4` (single-g); `src/sdlcpilot-cli.mjs:5,25,26,32` imports `PLUGABLE_PLAYGROUND`/`PLUGABLE_REGISTRY` (single-g), the only import site of this dependency anywhere in the repo. No genuine reference or mismatch.
+
+**Naming-mismatch re-check (Requirements step 2):** `node_modules/` was present (installed via `bun`). `sdlcpilot-cli`'s dependency spec is unchanged (`^1.0.0-alpha.4`), and the currently-installed resolved version is still `1.0.0-alpha.4` (per `node_modules/@liquid-labs/plugable-defaults/package.json` and `bun.lock`) — this repo's dependency spec has not yet been bumped to consume the newly-republished `1.0.0-alpha.7`. Direct inspection of the installed package's `dist/plugable-defaults.js` and `src/locations.mjs` confirms it exports `PLUGABLE_CLI_SETTINGS_PATH`, `PLUGABLE_PLAYGROUND`, and `PLUGABLE_REGISTRY`, all single-g — matching `src/sdlcpilot-cli.mjs`'s two import names exactly. No mismatch.
+
+**Env-var / config-path re-check (Requirements step 3):** the `PLUG(G)?ABLE_[A-Z_]*` sweep across the repo's own source, `README.md`, `Makefile`, and `package.json` (excluding `node_modules`) returned no hits outside `src/sdlcpilot-cli.mjs`'s two expected, correctly-named import usages and this plan-group's own planning docs. No `PLUGGABLE_*` (double-g) identifier, env var, or hardcoded config-directory path segment exists anywhere in this repo.
+
+No genuine "pluggable-defaults" (double-g) content reference, hardcoded double-g GitHub link, or import/export naming mismatch was found. Note (out of this task's scope, not acted on): this repo's `package.json` dependency spec has not been bumped to the newly-republished `1.0.0-alpha.7` — per `double-g-sweep.md`'s Conclusion this is a not-yet-actionable future follow-up, not something this verification task changes.
+
+## Status
+
+- **Outcome:** succeeded — verification-only, no code/doc/config changes.
+- **Date:** 2026-08-14.
+- **Validation summary:** all Requirements-step-1 grep invocations, the step-2 naming-mismatch check (against installed `node_modules/@liquid-labs/plugable-defaults@1.0.0-alpha.4`), and the step-3 env-var/config-path check were re-run; every match classified per Requirements step 4; zero genuine double-g content references or naming mismatches found; `git status` shows no unexpected changes beyond this task document's own edit.
+- **Affected source files:** none (verification-only; no source, doc, or config files modified other than this task document).
+- **Assumptions relied on:** the planning-time investigation in `plan/notes/double-g-sweep.md` was expected to still hold at execution time — confirmed. `node_modules/` was present (dependencies installed via `bun`), so the step-2 naming-mismatch check ran against real, current package contents rather than being skipped.
