@@ -15,5 +15,6 @@ phases:
           tier: sonnet-low
           git:
             branch: plan/pluggable-defaults-rename-03-001
-            commit: []
+            commit:
+                - 7989cb0
             merge: null
