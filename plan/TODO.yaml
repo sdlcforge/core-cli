@@ -13,6 +13,7 @@ phases:
           path: phase-03-verification-sweep/001-verify-no-double-g-references.md
           done: false
           tier: sonnet-low
+          digest: Re-ran the double-g grep sweep and naming-mismatch check against sdlcpilot-cli. No genuine double-g content, no naming mismatch. package.json dependency spec still pinned to ^1.0.0-alpha.4 (unbumped, per plan's own out-of-scope decision) but installed package exports remain correctly single-g either way. l9ql pre-existing unrelated followup left untouched as instructed. Documented no-op verification task.
           git:
             branch: plan/pluggable-defaults-rename-03-001
             commit:
