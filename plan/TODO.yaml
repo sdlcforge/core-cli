@@ -1,0 +1,8 @@
+slug: sdlcpilot-cli-rename
+version: 1
+title: ""
+phases:
+    - number: 1
+      slug: rename-relocation
+      title: Rename and Relocation to SDLCForge
+      tasks: []
