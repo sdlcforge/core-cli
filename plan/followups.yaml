@@ -38,3 +38,13 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: bun install alone (even with --force) did not update bun.lock's root-package name field while node_modules was already populated in the worktree — only removing bun.lock and reinstalling from scratch worked. Worth noting in case this is a broader bun behavior.
+    - title: Lockfile regeneration re-resolved several @li
+      id: NbtV
+      date: "2026-08-15"
+      tags:
+        - type:ambiguity
+        - plan/phase:rename-relocation
+        - plan/slug:sdlcpilot-cli-rename
+        - priority:unspecified
+        - effort:unspecified
+      text: Lockfile regeneration re-resolved several @liquid-labs/* and transitive dev dependencies to newer semver-compatible versions (e.g. comply-defaults alpha.8->alpha.9, plugable-defaults alpha.4->alpha.7) as a side effect of full reinstall rather than a prior-lockfile baseline. Within task's bun.lock scope but flagging as a side effect beyond the literal name-field change.
