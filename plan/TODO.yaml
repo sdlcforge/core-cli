@@ -62,6 +62,6 @@ phases:
           done: false
           tier: sonnet-low
           git:
-            branch: null
+            branch: main
             commit: []
             merge: null
