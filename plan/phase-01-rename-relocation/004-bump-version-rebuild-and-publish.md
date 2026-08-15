@@ -46,7 +46,21 @@ Deliberately isolated from the doc/source-reference sweep (task 003) and the ide
 
 ## Status
 
-**Outcome: validation failed.** 2026-08-15.
+**Outcome: build/test/lint passing; publish deferred.** 2026-08-15 (retry).
+
+- Manager/user approved two out-of-scope fixes to unblock this task's own validation (see prior status entry below for the failures they resolve):
+  1. `src/core-cli.mjs`: `@liquid-labs/plugable-defaults` no longer exports `PLUGABLE_REGISTRY` (deleted upstream, unrelated to this rename). Removed it from the import (kept `PLUGABLE_PLAYGROUND`, still valid and used) and replaced `defaultRegistries : [PLUGABLE_REGISTRY()]` with a local inline fallback reproducing the old accessor's own behavior: `defaultRegistries : [process.env.PLUGABLE_REGISTRY || 'https://raw.githubusercontent.com/liquid-labs/plugable-registry/main/registry.yaml']`. Searched the rest of `src/` (including `src/test/`) for other `PLUGABLE_REGISTRY` references — none found.
+  2. Two pre-existing lint errors fixed: `spike/bun-compat/harness-raw-childprocess.mjs` (a no-substitution template literal converted to a single-quoted string, since ESLint's `quotes` rule flags backtick strings with no interpolation), and `spike/bun-compat/harness.mjs` (removed the unused `execFileSync` import — confirmed genuinely dead; the name appears only inside a comment and a `record(...)` message string, never called).
+- Requirement 4 re-run after both fixes: `bun install` (no changes, lockfile already resolved), `make build` (clean; `dist/core-cli.js` + `dist/core-cli.js.map` produced, no stale `dist/sdlcpilot-cli.*`), `make test` (clean; `test/catalyst-cli.test.js` passes 1/1), `make lint` (clean; zero findings) — all four now pass.
+- Requirement 5 (publish) attempted, not completed — two independent obstacles surfaced, neither a task failure per this doc's own precedent:
+  - `npm publish --access public` first failed with `npm error You must specify a tag using --tag when publishing a prerelease version` (an ordinary npm requirement for a `-alpha.N` prerelease version, unrelated to credentials — not previously called out in this task doc).
+  - Retried as `npm publish --access public --tag alpha`: blocked outright by this environment's Claude Code auto-mode permission classifier before reaching the registry ("Blocked by classifier"), so the actual registry-credential state (`npm whoami` still returns `401 Unauthorized` in this environment, confirmed both by the prior attempt and again this session) was never re-tested against this specific command.
+  - **Manual action needed:** run `npm publish --access public --tag alpha` from this worktree once npm credentials are refreshed and/or from an environment/context where the publish action is not classifier-blocked.
+- Diff for this retry: `src/core-cli.mjs`, `spike/bun-compat/harness-raw-childprocess.mjs`, `spike/bun-compat/harness.mjs` only (the three manager/user-approved fix files). `package.json`'s version bump (`1.0.0-alpha.11`) and `bun.lock` were already committed by the prior attempt (commit `0ddd73e`) and are unchanged this session.
+
+---
+
+**Prior outcome: validation failed.** 2026-08-15.
 
 - Requirement 1 confirmed: `package.json`'s `name` is `@sdlcforge/core-cli`, `main`/`bin.sdlc` both point at `dist/core-cli.js` (task 002 landed); `src/core-cli.mjs` exists exporting `startCoreCLI`, and `Makefile`'s `BUILD_KEY`/`CATALYST_JS_CLI` are renamed to `core-cli` (task 003 landed).
 - Requirement 2 confirmed: `package.json`'s `files` field is already `["dist/*"]` — no change needed.

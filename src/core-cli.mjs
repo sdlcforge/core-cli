@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import * as fsPath from 'node:path'
 
 import { COMPLY_API_SPEC_PATH, COMPLY_HOME, COMPLY_PORT, COMPLY_SERVER_CLI_NAME } from '@liquid-labs/comply-defaults'
-import { PLUGABLE_PLAYGROUND, PLUGABLE_REGISTRY } from '@liquid-labs/plugable-defaults'
+import { PLUGABLE_PLAYGROUND } from '@liquid-labs/plugable-defaults'
 import { startCLI } from '@liquid-labs/plugable-express-cli'
 
 let versionCache
@@ -29,7 +29,7 @@ const localServerDevPaths = [
 const cliSettings = {
   cliName           : 'sdlc',
   getVersion,
-  defaultRegistries : [PLUGABLE_REGISTRY()],
+  defaultRegistries : [process.env.PLUGABLE_REGISTRY || 'https://raw.githubusercontent.com/liquid-labs/plugable-registry/main/registry.yaml'],
   localServerDevPaths,
   noRegistries      : false,
   port              : COMPLY_PORT(),

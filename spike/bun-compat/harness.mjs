@@ -23,7 +23,7 @@
 import { mkdtempSync, rmSync, writeFileSync, existsSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import * as fsPath from 'node:path'
-import { execSync, execFileSync } from 'node:child_process'
+import { execSync } from 'node:child_process'
 
 import shell from 'shelljs'
 
