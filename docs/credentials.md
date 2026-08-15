@@ -1,5 +1,5 @@
 # <span id="credentials">credentials</span>
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)
 
 ## Functions/endpoints
 
@@ -40,4 +40,4 @@
 - `replace`: _(opt, boolean)_\
   By default, trying to import a credential of the same type results in an error, unless `replace` is true.
 
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)

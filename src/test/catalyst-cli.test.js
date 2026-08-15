@@ -1,7 +1,7 @@
 /* global afterAll beforeAll describe test */
-import { startSDLCPilotCLI } from '../sdlcpilot-cli'
+import { startCoreCLI } from '../core-cli'
 
-describe('startSDLCPilotCLI', () => {
+describe('startCoreCLI', () => {
   let origArgv
 
   beforeAll(() => { origArgv = process.argv })
@@ -10,6 +10,6 @@ describe('startSDLCPilotCLI', () => {
   test('can start the CLI process (defines necessary parameters)', async() => {
     process.argv = ['node', 'foo.js', '--version']
 
-    await startSDLCPilotCLI() // expect to not throw
+    await startCoreCLI() // expect to not throw
   })
 })
