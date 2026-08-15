@@ -30,7 +30,7 @@ phases:
             branch: plan/sdlcpilot-cli-rename-01-002
             commit:
                 - 8b0c77d
-            merge: null
+            merge: 0998618361d745a9b9a3d42b08a5ce389080b194
         - number: 3
           slug: rename-build-artifacts-and-fix-self-references
           title: Rename Build Artifacts and Fix Self-References
