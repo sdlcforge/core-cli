@@ -44,3 +44,15 @@ Confirm the GitHub repository's identity already matches the confirmed target `s
 
 - [GitHub and npm current-state investigation](../notes/github-and-npm-current-state.md) — the full verification trail behind this task's framing, including the original `core-cli`-vs-`sdlc-cli` discrepancy and its resolution.
 - `plan/overview.md`'s "Flagged for manager" section — records the discrepancy as now resolved, per the user's confirmation.
+
+## Status
+
+- **Outcome:** succeeded
+- **Date:** 2026-08-15
+- **Validation summary:** All three checks passed.
+  - `gh api repos/sdlcforge/core-cli --jq '.full_name'` → `sdlcforge/core-cli`.
+  - `gh api repos/sdlcforge/sdlc-cli --jq '{full_name}'` → 404 Not Found (no stray repo).
+  - `git status` in this worktree shows a clean working tree (no changes made).
+- **Origin remote (for task 002's benefit):** `origin` already points to `git@github.com:sdlcforge/core-cli.git` for both fetch and push (independently re-verified in this task, not just taken on the manager's word). A second remote, `workspace` → `git@github.com:zanerock/sdlcpilot-cli.git`, is present and out of scope.
+- **Assumptions relied on:** the task doc's `## Assumptions` — `core-cli` is the confirmed, user-approved final name (not `sdlc-cli`), and the transfer-plus-rename to `sdlcforge/core-cli` already happened prior to this session.
+- **Affected source files:** none — this task's diff is empty by design (verification-only).
