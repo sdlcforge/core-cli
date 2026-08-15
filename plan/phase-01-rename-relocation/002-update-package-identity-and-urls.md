@@ -39,6 +39,15 @@ This task is independent of and parallel-eligible with `003-rename-build-artifac
 - Task 003 will independently rename the built-artifact filename to `dist/core-cli.js` (matching this task's `main`/`bin` edits) via `Makefile`'s `BUILD_KEY`/`CATALYST_JS_CLI` variables — the two tasks are coordinated on this exact filename despite running in parallel. If you land first, the `main`/`bin` paths will point at a not-yet-existing file until task 003 lands too; this is expected and not a failure of this task.
 - `dist/` is gitignored (confirmed via `.gitignore`) — no stale, tracked, old-named build artifact needs deleting from git.
 
+## Status
+
+- **Outcome:** succeeded (2026-08-15)
+- **Requirement 1 (`package.json` field updates):** applied — `name`, `main`, `bin.sdlc`, `repository.url`, `bugs.url`, `homepage`, `_comply.orgKey` all updated per spec. `dependencies`/`devDependencies`/`author` left untouched.
+- **Requirement 2 (local git `origin` remote):** verified already correct (manager had completed this manually) — `origin` points at `git@github.com:sdlcforge/core-cli.git`, confirmed via `git remote -v` and `git fetch origin`. `workspace` remote unchanged.
+- **Requirement 3 (`bun.lock` regeneration):** a plain `bun install` did not rewrite the lockfile's root-package `name` field even though `node_modules` was already present (it reported "no changes" and, once retried with `--force`, still reported "Saved lockfile" without altering the `name` field on disk). Regenerated cleanly by removing `bun.lock` and running a fresh `bun install`, which correctly wrote `"name": "@sdlcforge/core-cli"`. This also re-resolved several transitive/direct semver-range dependency versions to their current latest-matching versions (e.g. `@liquid-labs/comply-defaults` `1.0.0-alpha.8` → `1.0.0-alpha.9`, `@liquid-labs/plugable-defaults` `1.0.0-alpha.4` → `1.0.0-alpha.7`, plus a handful of transitive dev-tooling bumps) since no prior lockfile was reused as a resolution baseline — an expected side effect of a full lockfile regeneration, not a manual dependency-version change.
+- **Validation:** all checks in `## Validation` passed. `git diff` touches exactly `package.json` and `bun.lock`.
+- Affected files: `package.json`, `bun.lock`.
+
 ## References
 
 - [GitHub and npm current-state investigation](../notes/github-and-npm-current-state.md) — confirms the live npm package is unscoped `sdlcpilot-cli`, not `@liquid-labs/sdlcpilot-cli`. The registry-availability check the notes file recorded was against `sdlc-cli`/`@sdlcforge/sdlc-cli` (the plan's original target name); `core-cli`/`@sdlcforge/core-cli` were not separately checked during planning, since the live GitHub repo already confirms `core-cli` is a name the user's `sdlcforge` org already controls and uses — no separate npm-availability concern is expected, but this task's own `npm install`/publish-adjacent steps will surface any actual collision.
