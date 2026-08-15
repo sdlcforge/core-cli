@@ -1,6 +1,6 @@
 {
   "name": "@sdlcforge/core-cli",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "description": "Command line interface for SDLCPilot, a Software Development Life Cycle management tool.",
   "main": "dist/core-cli.js",
   "bin": {
