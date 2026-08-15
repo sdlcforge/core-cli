@@ -35,7 +35,7 @@ phases:
           slug: rename-build-artifacts-and-fix-self-references
           title: Rename Build Artifacts and Fix Self-References
           path: phase-01-rename-relocation/003-rename-build-artifacts-and-fix-self-references.md
-          done: false
+          done: true
           tier: sonnet-med
           digest: Executed full build-artifact rename cascade (Makefile BUILD_KEY/CATALYST_JS_CLI, git mv src/sdlcpilot-cli.mjs to src/core-cli.mjs, startSDLCPilotCLI to startCoreCLI and consumers) plus README.md/docs/spike self-reference sweep per task doc. All validation checks pass; working tree clean.
           git:
