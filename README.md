@@ -2,7 +2,7 @@
 
 **Note:** This CLI is being consolidated into a single self-contained binary as part of an in-progress SDLCForge modernization. See the project's `plan/` directory for details on this migration effort.
 
-Command line interface for SDLCPilot, a Software Development Life Cycle management tool. Currently support GitHub node projects.
+Command line interface for SDLC management, part of the SDLCForge platform. Currently support GitHub node projects.
 
 - [Install](#install)
 - [Usage](#usage)
@@ -10,15 +10,15 @@ Command line interface for SDLCPilot, a Software Development Life Cycle manageme
 ## Install
 
 1. If either `npm -v` or `node -v` are not found, see ['Install `node` and `npm`'](#install-node-and-npm).
-2. Install 'sdlcpilot-cli' and '@sdlcforge/core-server':
+2. Install '@sdlcforge/core-cli' and '@sdlcforge/core-server':
    ```bash
-   npm i -g sdlcpilot-cli @sdlcforge/core-server
+   npm i -g @sdlcforge/core-cli @sdlcforge/core-server
    ```
 3. Run:
    ```bash
    sdlc --setup
    ```
-4. Open a new terminal window to pickup the SDLCPilot tab completion support, or type 'source .bashrc' or 'source .zshrc' on from your bash or zsh terminal respectively.
+4. Open a new terminal window to pickup the SDLC CLI tab completion support, or type 'source .bashrc' or 'source .zshrc' on from your bash or zsh terminal respectively.
 5. Install the base SDLC plugins:
    ```bash
    sdlc server plugins bundles add -- bundles=sdlcpilot-github-node
