@@ -28,3 +28,13 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: '`sdlc server version`''s CLI-formatted output shows `plugable-express: undefined` in production because bun.lock pins the transitive dependency @liquid-labs/plugable-express@1.0.0-alpha.55 (pulled via @liquid-labs/plugable-express-cli). That version has the versionInfo.server-vs-versionInfo[''plugable-express''] key bug in src/handlers/server/version.js. The bug is already fixed upstream at pluggable-express commit 1367c9f, published as 1.0.0-alpha.57. sdlcpilot-cli itself has no formatter code for this — it''s a pure passthrough to plugable-express-cli''s startCLI(). Fix: once a plugable-express-cli release built against plugable-express>=1.0.0-alpha.57 is available (or the local yalc chain is updated), bump the dependency here and regenerate bun.lock. No sdlcpilot-cli source change needed.'
+    - title: bun install alone (even with --force) did not
+      id: UGij
+      date: "2026-08-15"
+      tags:
+        - type:ambiguity
+        - plan/phase:rename-relocation
+        - plan/slug:sdlcpilot-cli-rename
+        - priority:unspecified
+        - effort:unspecified
+      text: bun install alone (even with --force) did not update bun.lock's root-package name field while node_modules was already populated in the worktree — only removing bun.lock and reinstalling from scratch worked. Worth noting in case this is a broader bun behavior.
