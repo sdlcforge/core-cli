@@ -42,7 +42,7 @@ phases:
             branch: plan/sdlcpilot-cli-rename-01-003
             commit:
                 - 16fbd8d
-            merge: null
+            merge: 685a3a79b35627dd3f01fca03a4ff93875146c38
         - number: 4
           slug: bump-version-rebuild-and-publish
           title: Bump Version, Rebuild, and Publish to npm
