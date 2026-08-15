@@ -23,7 +23,7 @@ phases:
           slug: update-package-identity-and-urls
           title: Update Package Identity and Repository URLs
           path: phase-01-rename-relocation/002-update-package-identity-and-urls.md
-          done: false
+          done: true
           tier: sonnet-low
           digest: Updated package.json identity fields (name, main, bin.sdlc target, repository.url, bugs.url, homepage, _comply.orgKey) to @sdlcforge/core-cli, left dependencies/devDependencies/author untouched. Verified origin remote already correct. Regenerated bun.lock via full reinstall since in-place bun install did not update the root name field.
           git:
