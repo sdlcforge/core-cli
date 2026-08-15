@@ -1,7 +1,7 @@
-# SDLCPilot Concepts
+# SDLC CLI Concepts
 
 #### change control
-a collection of processes intended to manage software change according to certain policies. SDLCPilot implements automated change control according to [org](#org) and [project](#project) defined policies.
+a collection of processes intended to manage software change according to certain policies. The CLI implements automated change control according to [org](#org) and [project](#project) defined policies.
 
 #### credential
 some secret file or key used to prove the identity of a user.

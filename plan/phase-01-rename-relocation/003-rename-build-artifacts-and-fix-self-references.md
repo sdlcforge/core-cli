@@ -70,3 +70,29 @@ This task is independent of and parallel-eligible with `002-update-package-ident
 ## References
 
 - [GitHub and npm current-state investigation](../notes/github-and-npm-current-state.md) — notes the partial manual `README.md` title edit that motivates the branding judgment call above.
+
+## Status
+
+- **Outcome:** succeeded
+- **Date:** 2026-08-15
+- **Validation summary:** all four `## Validation` checks passed — `git status` scope matches the expected 17-file list exactly; the repo-wide `sdlcpilot` grep (excluding `plan/`, `node_modules`, `dist`, `test-staging`, `.git`, `worktrees`) returns only legitimate `plan/` discussion of the rename and the deliberately-untouched `sdlcpilot-github-node` bundle-name string in `README.md`; `grep -rn 'SDLCPilot' README.md docs/ src/` returns no hits; `grep -rn 'core-cli\|startCoreCLI' src/` shows the new file/import/symbol names used consistently across `src/index.js` and `src/test/catalyst-cli.test.js`.
+- **Affected source files:**
+  - `Makefile`
+  - `src/core-cli.mjs` (renamed from `src/sdlcpilot-cli.mjs`)
+  - `src/index.js`
+  - `src/test/catalyst-cli.test.js`
+  - `README.md`
+  - `docs/index.md`
+  - `docs/concepts.md`
+  - `docs/common-usage/projects.md`
+  - `docs/heartbeat.md`
+  - `docs/help.md`
+  - `docs/server.md`
+  - `docs/credentials.md`
+  - `docs/work.md`
+  - `docs/projects.md`
+  - `docs/orgs.md`
+  - `spike/bun-compat/harness.mjs`
+  - `spike/bun-compat/harness-raw-childprocess.mjs`
+- **Assumptions applied:** the "SDLCPilot" → "SDLC CLI" prose/title brand-noun retirement described in `## Assumptions` was applied as specified.
+- **Decision made beyond the enumerated line list:** `README.md` line 21 ("Open a new terminal window to pickup the SDLCPilot tab completion support...") carried a `SDLCPilot` occurrence not called out in Requirement 2's line-by-line list, but the task's own `## Purpose and scope` ("fix every in-repo self-reference to ... its `SDLCPilot` branding in `README.md`") and Validation check 3 (`grep -rn 'SDLCPilot' README.md docs/ src/` must return no hits) both require it to change. Reworded to "SDLC CLI tab completion support," consistent with the same brand-noun-retirement framing applied elsewhere in this task.

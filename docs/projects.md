@@ -1,5 +1,5 @@
 # <span id="projects">projects</span>
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)
 
 ## Functions/endpoints
 
@@ -434,4 +434,4 @@ By default, this method will analyze the current project and produce an appropri
   2. If there is no index file in the source directory, but there are 'lib' and 'bin', 'cli', 'exec', or 'executable' subdirectories containing index files, then we assume a single library under 'lib' and a single executable in the 'bin'/'cli'/'exec'/'executable'. Any one of these directories will be recognized and an error will be thrown if there are multiple directories executable directories. The library output is determined by the 'main' field in 'package.json' and the executable is named by appending '-exec' to the library base name. E.g., given a main entry of 'dist/foo.js', the executable would be 'dist/foo-exec.js'.
   3. Otherwise, the fully automated setup fails and library and executables must be defined using the 'withLibs' and 'withExecutables' parameters.
 
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)

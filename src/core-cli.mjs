@@ -40,6 +40,6 @@ const cliSettings = {
   serverVersion     : 'latest'
 }
 
-const startSDLCPilotCLI = async() => await startCLI(cliSettings)
+const startCoreCLI = async() => await startCLI(cliSettings)
 
-export { startSDLCPilotCLI }
+export { startCoreCLI }

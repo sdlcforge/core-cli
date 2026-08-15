@@ -1,3 +1,3 @@
-import { startSDLCPilotCLI } from './sdlcpilot-cli'
+import { startCoreCLI } from './core-cli'
 
-startSDLCPilotCLI()
+startCoreCLI()

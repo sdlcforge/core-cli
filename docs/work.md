@@ -1,5 +1,5 @@
 # <span id="work">work</span>
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)
 
 ## Functions/endpoints
 
@@ -386,4 +386,4 @@ Remove projects from the named unit of work.
 
 Removes projects from the named unit of work. If the work branch is the current working branch for the repo, then it must be clean (unless `allowUnclean` is specified). If the work branch is present, it must have no un-merged changes (unless `forgetChanges` is specified). If the current repo branch is anything other than the work branch, then it is left in place.
 
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)

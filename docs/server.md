@@ -1,5 +1,5 @@
 # <span id="server">server</span>
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)
 
 ## Functions/endpoints
 
@@ -371,4 +371,4 @@ Removes a reistry from the list of plugin registries.
 
 Removes a reistry from the list of plugin registries.
 
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)

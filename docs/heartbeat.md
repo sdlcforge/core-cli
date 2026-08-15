@@ -1,5 +1,5 @@
 # <span id="heartbeat">heartbeat</span>
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)
 
 ## Functions/endpoints
 
@@ -14,4 +14,4 @@ Endpoint to check that the server is up and listening.
 
 _none_
 
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)

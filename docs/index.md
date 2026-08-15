@@ -1,4 +1,4 @@
-# <span id="sdlcpilot_documentation">SDLCPilot Documentation</span>
+# <span id="sdlc_cli_documentation">SDLC CLI Documentation</span>
 
 This project is approaching the 'beta' phase where (after some cleanup) we start locking down the existing interface. At this point, users should consider the inferface volatile and subject to change.
 
