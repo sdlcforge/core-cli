@@ -15,7 +15,8 @@ phases:
           tier: sonnet-low
           git:
             branch: plan/sdlcpilot-cli-rename-01-001
-            commit: []
+            commit:
+                - 3706f63
             merge: null
         - number: 2
           slug: update-package-identity-and-urls
