@@ -39,7 +39,8 @@ phases:
           tier: sonnet-med
           git:
             branch: plan/sdlcpilot-cli-rename-01-003
-            commit: []
+            commit:
+                - 16fbd8d
             merge: null
         - number: 4
           slug: bump-version-rebuild-and-publish
