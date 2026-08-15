@@ -48,16 +48,6 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: Lockfile regeneration re-resolved several @liquid-labs/* and transitive dev dependencies to newer semver-compatible versions (e.g. comply-defaults alpha.8->alpha.9, plugable-defaults alpha.4->alpha.7) as a side effect of full reinstall rather than a prior-lockfile baseline. Within task's bun.lock scope but flagging as a side effect beyond the literal name-field change.
-    - title: 'make test broken: bun.lock-pinned @liquid-lab'
-      id: 2J1p
-      date: "2026-08-15"
-      tags:
-        - type:ambiguity
-        - plan/phase:rename-relocation
-        - plan/slug:sdlcpilot-cli-rename
-        - priority:unspecified
-        - effort:unspecified
-      text: 'make test broken: bun.lock-pinned @liquid-labs/plugable-defaults@1.0.0-alpha.7 no longer exports PLUGABLE_REGISTRY, which src/core-cli.mjs imports and calls. Manager investigation (post-report) confirmed this is not a stale-lockfile artifact: plugable-defaults''s own current source tree (post pluggable-defaults-rename plan, alpha.7) contains no PLUGABLE_REGISTRY function anywhere - it was dropped entirely. The main sdlcpilot-cli checkout''s node_modules had a stale historical build that happened to still have it, masking the break until task 002''s fresh bun.lock regeneration installed the real, current alpha.7. This is a genuine cross-project API removal/incompatibility, unrelated to the rename itself, requiring a product decision (restore an equivalent in plugable-defaults, or update core-cli to a different config mechanism, or remove the registry-default feature) - out of scope for this rename plan-group to guess at.'
     - title: make lint fails on 2 pre-existing errors in s
       id: dd6K
       date: "2026-08-15"
