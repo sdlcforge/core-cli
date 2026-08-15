@@ -6,16 +6,6 @@ phases:
       slug: rename-relocation
       title: Rename and Relocation to SDLCForge
       tasks:
-        - number: 1
-          slug: rename-github-repository
-          title: Rename GitHub Repository
-          path: phase-01-rename-relocation/001-rename-github-repository.md
-          done: false
-          tier: sonnet-low
-          git:
-            branch: null
-            commit: []
-            merge: null
         - number: 2
           slug: update-package-identity-and-urls
           title: Update Package Identity and Repository URLs
