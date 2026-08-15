@@ -61,6 +61,7 @@ phases:
           path: phase-01-rename-relocation/005-relocate-project-directory.md
           done: false
           tier: sonnet-low
+          digest: 'Manager-executed directory relocation: pushed pending commits, moved liquid-labs/sdlcpilot-cli to sdlcforge/core-cli, repaired worktree linkage metadata, refreshed the project index, and updated session target-project state. All validation checks pass.'
           git:
             branch: main
             commit: []
