@@ -17,7 +17,7 @@ const record = (name, status, detail) => {
   process.stderr.write(`[${status === 'pass' ? 'PASS' : 'FAIL'}] ${name}${detail ? ' - ' + detail : ''}\n`)
 }
 
-const scratchRoot = mkdtempSync(fsPath.join(tmpdir(), 'sdlcpilot-bun-spike-raw-'))
+const scratchRoot = mkdtempSync(fsPath.join(tmpdir(), 'core-cli-bun-spike-raw-'))
 const stagingDir = fsPath.join(scratchRoot, 'staging-project')
 const bareRemoteDir = fsPath.join(scratchRoot, 'mock-origin.git')
 

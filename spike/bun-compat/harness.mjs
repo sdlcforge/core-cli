@@ -48,7 +48,7 @@ const runCheck = async(name, fn) => {
 // scratch layout: a "staging" project dir (mirrors create-lib.mjs's stagingDir) and a
 // local bare repo standing in for the GitHub remote (mocking `hub create`'s network
 // effect, per the task's explicit allowance to mock against "a local git remote").
-const scratchRoot = mkdtempSync(fsPath.join(tmpdir(), 'sdlcpilot-bun-spike-'))
+const scratchRoot = mkdtempSync(fsPath.join(tmpdir(), 'core-cli-bun-spike-'))
 const stagingDir = fsPath.join(scratchRoot, 'staging-project')
 const bareRemoteDir = fsPath.join(scratchRoot, 'mock-origin.git')
 
