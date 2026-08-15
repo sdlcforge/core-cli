@@ -78,3 +78,13 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: npm publish never attempted (blocked behind the above); npm whoami also returns 401 in this environment - credential refresh will be needed once test/lint are unblocked.
+    - title: Task 5 (directory relocation) depends on task
+      id: ixk8
+      date: "2026-08-15"
+      tags:
+        - type:ambiguity
+        - plan/phase:rename-relocation
+        - plan/slug:sdlcpilot-cli-rename
+        - priority:unspecified
+        - effort:unspecified
+      text: Task 5 (directory relocation) depends on task 4 completing - plan execution is paused here pending a decision on the PLUGABLE_REGISTRY break.
