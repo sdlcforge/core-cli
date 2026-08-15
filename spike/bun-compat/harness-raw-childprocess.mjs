@@ -44,7 +44,7 @@ process.on('SIGTERM', handleTerminationSignal)
 try {
   try {
     execSync(`mkdir -p "${stagingDir}"`)
-    execSync(`git init --quiet . && git config user.email spike@example.com && git config user.name "Bun Spike"`, { cwd : stagingDir })
+    execSync('git init --quiet . && git config user.email spike@example.com && git config user.name "Bun Spike"', { cwd : stagingDir })
     record('execSync: git init', 'pass', 'ok')
   }
   catch (e) {
