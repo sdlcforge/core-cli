@@ -1,6 +1,6 @@
-# SDLCPilot Common Usage : Projects
+# SDLC CLI Common Usage : Projects
 
-SDLCPilot can be used to quickly set up hardened projects according to the organization policy.
+The CLI can be used to quickly set up hardened projects according to the organization policy.
 
 ## Creating a project
 

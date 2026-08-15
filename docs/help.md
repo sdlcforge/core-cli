@@ -1,5 +1,5 @@
 # <span id="help">help</span>
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)
 
 ## Functions/endpoints
 
@@ -25,4 +25,4 @@
 - `writeFileLocally`: _(opt, boolean)_\
   If true, then will write 'output' using 'fs' rather than sending as a result in the response.
 
-[<- SDLCPilot Documentation](./index.md)
+[<- SDLC CLI Documentation](./index.md)
