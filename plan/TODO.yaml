@@ -46,3 +46,13 @@ phases:
             branch: null
             commit: []
             merge: null
+        - number: 1
+          slug: rename-github-repository
+          title: Verify GitHub Repository Identity
+          path: phase-01-rename-relocation/001-rename-github-repository.md
+          done: false
+          tier: sonnet-low
+          git:
+            branch: null
+            commit: []
+            merge: null
