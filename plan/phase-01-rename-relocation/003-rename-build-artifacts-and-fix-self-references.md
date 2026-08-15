@@ -2,7 +2,7 @@
 
 ## Purpose and scope
 
-Rename the built-artifact filename (and the `Makefile`/`src/` naming that produces it) from `sdlcpilot-cli` to `sdlc-cli`, and fix every in-repo self-reference to the old package name and its `SDLCPilot` branding in `README.md`, `docs/**/*.md`, and the `spike/` scratch scripts. No standard Flow skill applies beyond ordinary file editing; follow this task document directly.
+Rename the built-artifact filename (and the `Makefile`/`src/` naming that produces it) from `sdlcpilot-cli` to `core-cli`, and fix every in-repo self-reference to the old package name and its `SDLCPilot` branding in `README.md`, `docs/**/*.md`, and the `spike/` scratch scripts. No standard Flow skill applies beyond ordinary file editing; follow this task document directly.
 
 This task is independent of and parallel-eligible with `002-update-package-identity-and-urls.md` (disjoint files: this task owns `Makefile`/`src/`/`README.md`/`docs/`/`spike/`; task 002 owns `package.json`/`bun.lock`/the git remote) and with `001-rename-github-repository.md` (which touches no repository files at all).
 
@@ -10,18 +10,18 @@ This task is independent of and parallel-eligible with `002-update-package-ident
 
 ### 1. Build-artifact naming cascade
 
-- `Makefile` line 1: `BUILD_KEY:=sdlcpilot-cli` → `BUILD_KEY:=sdlc-cli`.
-- `Makefile` line 5: `CATALYST_JS_CLI=$(DIST)/sdlcpilot-cli.js` → `CATALYST_JS_CLI=$(DIST)/sdlc-cli.js`. This is a **hardcoded** filename, not derived from `BUILD_KEY` — must be edited explicitly; changing `BUILD_KEY` alone does not change it. This must match exactly the `dist/sdlc-cli.js` filename task 002's `package.json` `main`/`bin` edits use.
-- Rename `src/sdlcpilot-cli.mjs` → `src/sdlc-cli.mjs` (`git mv`).
-- In the renamed file, rename the exported function `startSDLCPilotCLI` → `startSdlcCLI` (avoid naming it `startCLI` — that name is already taken by the file's own `import { startCLI } from '@liquid-labs/plugable-express-cli'`; a same-name local binding would shadow/conflict).
-- `src/index.js`: update the import path (`'./sdlcpilot-cli'` → `'./sdlc-cli'`) and the imported/called symbol name (`startSDLCPilotCLI` → `startSdlcCLI`).
-- `src/test/catalyst-cli.test.js`: update the import path (`'../sdlcpilot-cli'` → `'../sdlc-cli'`) and every reference to `startSDLCPilotCLI` (the import, the `describe('startSDLCPilotCLI', ...)` label, and the call inside the `test(...)` body) to `startSdlcCLI`.
+- `Makefile` line 1: `BUILD_KEY:=sdlcpilot-cli` → `BUILD_KEY:=core-cli`.
+- `Makefile` line 5: `CATALYST_JS_CLI=$(DIST)/sdlcpilot-cli.js` → `CATALYST_JS_CLI=$(DIST)/core-cli.js`. This is a **hardcoded** filename, not derived from `BUILD_KEY` — must be edited explicitly; changing `BUILD_KEY` alone does not change it. This must match exactly the `dist/core-cli.js` filename task 002's `package.json` `main`/`bin` edits use.
+- Rename `src/sdlcpilot-cli.mjs` → `src/core-cli.mjs` (`git mv`).
+- In the renamed file, rename the exported function `startSDLCPilotCLI` → `startCoreCLI` (avoid naming it `startCLI` — that name is already taken by the file's own `import { startCLI } from '@liquid-labs/plugable-express-cli'`; a same-name local binding would shadow/conflict).
+- `src/index.js`: update the import path (`'./sdlcpilot-cli'` → `'./core-cli'`) and the imported/called symbol name (`startSDLCPilotCLI` → `startCoreCLI`).
+- `src/test/catalyst-cli.test.js`: update the import path (`'../sdlcpilot-cli'` → `'../core-cli'`) and every reference to `startSDLCPilotCLI` (the import, the `describe('startSDLCPilotCLI', ...)` label, and the call inside the `test(...)` body) to `startCoreCLI`.
 - These are purely internal identifiers (this package publishes only the built CLI binary via `files: ["dist/*"]`; nothing external imports this module by name), so this rename carries no external-compatibility risk.
 
 ### 2. `README.md`
 
-- Line 12: `2. Install 'sdlcpilot-cli' and '@sdlcforge/core-server':` → `2. Install '@sdlcforge/sdlc-cli' and '@sdlcforge/core-server':`.
-- Line 13: `npm i -g sdlcpilot-cli @sdlcforge/core-server` → `npm i -g @sdlcforge/sdlc-cli @sdlcforge/core-server`.
+- Line 12: `2. Install 'sdlcpilot-cli' and '@sdlcforge/core-server':` → `2. Install '@sdlcforge/core-cli' and '@sdlcforge/core-server':`.
+- Line 13: `npm i -g sdlcpilot-cli @sdlcforge/core-server` → `npm i -g @sdlcforge/core-cli @sdlcforge/core-server`.
 - Line 5: `Command line interface for SDLCPilot, a Software Development Life Cycle management tool.` — reword to drop the `SDLCPilot` brand noun, consistent with this same file's own `#` title (already reads `# sdlcforge cli`, not `# SDLCPilot ...` — a partial manual edit from before this plan). Suggested wording: `Command line interface for SDLC management, part of the SDLCForge platform.` — exact phrasing is your discretion, but the resulting text must not contain the literal string `SDLCPilot`.
 - Line 24 (`sdlc server plugins bundles add -- bundles=sdlcpilot-github-node`): **do not change.** `sdlcpilot-github-node` names a plugin bundle registered in a different component's registry, not this package's own identity — out of scope for this rename.
 - Leave the rest of the file (usage walkthrough, install troubleshooting steps that don't name the package) untouched.
@@ -44,15 +44,15 @@ This task is independent of and parallel-eligible with `002-update-package-ident
 
 ### 4. `spike/bun-compat/`
 
-- `spike/bun-compat/harness.mjs` line 51 and `spike/bun-compat/harness-raw-childprocess.mjs` line 20: the temp-directory prefix strings `'sdlcpilot-bun-spike-'` / `'sdlcpilot-bun-spike-raw-'` — rename to `'sdlc-cli-bun-spike-'` / `'sdlc-cli-bun-spike-raw-'` for consistency with the rest of the sweep. Purely cosmetic (a local scratch-directory name prefix with no external visibility), low risk.
+- `spike/bun-compat/harness.mjs` line 51 and `spike/bun-compat/harness-raw-childprocess.mjs` line 20: the temp-directory prefix strings `'sdlcpilot-bun-spike-'` / `'sdlcpilot-bun-spike-raw-'` — rename to `'core-cli-bun-spike-'` / `'core-cli-bun-spike-raw-'` for consistency with the rest of the sweep. Purely cosmetic (a local scratch-directory name prefix with no external visibility), low risk.
 - Every other `@liquid-labs/...` reference in `spike/bun-compat/README.md`, `harness.mjs`, and `harness-raw-childprocess.mjs` (`@liquid-labs/liq-projects`, `@liquid-labs/shell-toolkit`, `@liquid-labs/github-toolkit`) names **other** packages that are not part of this rename — leave every one of those untouched.
 
 ## Validation
 
-- `git status` shows changes limited to: `Makefile`, `src/sdlc-cli.mjs` (renamed from `src/sdlcpilot-cli.mjs`), `src/index.js`, `src/test/catalyst-cli.test.js`, `README.md`, the ten `docs/*.md` files listed above, and the two `spike/bun-compat/*.mjs` files.
+- `git status` shows changes limited to: `Makefile`, `src/core-cli.mjs` (renamed from `src/sdlcpilot-cli.mjs`), `src/index.js`, `src/test/catalyst-cli.test.js`, `README.md`, the ten `docs/*.md` files listed above, and the two `spike/bun-compat/*.mjs` files.
 - `grep -rn --include='*.js' --include='*.mjs' --include='*.md' -i 'sdlcpilot' . --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=test-staging --exclude-dir=.git --exclude-dir=worktrees` returns **no** hits outside of: (a) this plan's own `plan/` documents (which legitimately discuss the old name while describing the rename), and (b) the deliberately-untouched `sdlcpilot-github-node` bundle-name string in `README.md`.
 - `grep -rn 'SDLCPilot' README.md docs/ src/` returns no hits (all retitled/reworded per Requirements 2–3).
-- `node -e "require('./src/index.js')"` is not expected to work standalone (this is an `.mjs`/ESM-flavored source tree built via `make build`) — instead, confirm the rename is internally consistent by grepping: `grep -rn 'sdlc-cli\|startSdlcCLI' src/` shows the new file, import, and symbol names used consistently across `src/index.js` and `src/test/catalyst-cli.test.js`.
+- `node -e "require('./src/index.js')"` is not expected to work standalone (this is an `.mjs`/ESM-flavored source tree built via `make build`) — instead, confirm the rename is internally consistent by grepping: `grep -rn 'core-cli\|startCoreCLI' src/` shows the new file, import, and symbol names used consistently across `src/index.js` and `src/test/catalyst-cli.test.js`.
 - Do not run `make build`/`make test` in this task — `package.json`'s `main`/`bin` fields (task 002's scope) must also have landed for a real build to succeed; that combined verification is task 004's job.
 
 ## Checkpoint hints
@@ -64,7 +64,7 @@ This task is independent of and parallel-eligible with `002-update-package-ident
 
 ## Assumptions
 
-- "SDLCPilot" as a prose/title brand noun is being retired in favor of generic "SDLC CLI" framing, not replaced with a new "SDLCForge Pilot"-style brand — inferred from `README.md`'s own already-partially-updated `#` title (`# sdlcforge cli`) and the wave's stated intent to match "the sdlcforge product-naming convention core-server already uses." This is a judgment call, flagged in `plan/overview.md`'s "Flagged for manager" section — if you find stronger contrary evidence while working this task, note it in your report rather than silently picking different wording.
+- "SDLCPilot" as a prose/title brand noun is being retired in favor of generic "SDLC CLI" framing, not replaced with a new "SDLCForge Pilot"-style brand — inferred from `README.md`'s own already-partially-updated `#` title (`# sdlcforge cli`) and the wave's stated intent to match "the sdlcforge product-naming convention core-server already uses." This is a judgment call, flagged in `plan/overview.md`'s "Flagged for manager" section — if you find stronger contrary evidence while working this task, note it in your report rather than silently picking different wording. **This "SDLC CLI" prose/title framing is deliberately unaffected by the `core-cli` package/repo-name correction** — the user-facing command stays `sdlc` (see task 002 and `plan/overview.md`'s "Flagged for manager" section for the related, separate judgment call about whether the command key itself should someday change), so titles/prose stay "SDLC CLI ..."; only the literal package-name/repo-name/URL/filename occurrences described elsewhere in this task change to `core-cli`.
 - `dist/` is gitignored — no stale, git-tracked, old-named build output needs deleting.
 
 ## References

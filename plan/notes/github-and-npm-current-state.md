@@ -4,6 +4,12 @@
 
 Findings from this planning session's own verification of the actual current GitHub and npm state, ahead of drafting the rename tasks. Recorded because the state found materially differs from the dispatch's assumed starting point.
 
+## Addendum — resolution (2026-08-14, amendment session)
+
+**The `core-cli`-vs-`sdlc-cli` discrepancy discussed throughout this document is now resolved.** The user was asked directly and confirmed: `core-cli` is the correct, intentional final name, not `sdlc-cli`. The live `sdlcforge/core-cli` state described below is the confirmed target identity, not a stale interim state needing correction.
+
+The investigation below is preserved **unedited, as a historical record** of the discrepancy as it stood at planning time — including its framing of `sdlc-cli` as "the plan's target" and `core-cli` as "the interim/unexplained state." Read every below reference to `sdlc-cli` as the plan's then-assumed (and now superseded) target, and every reference to `core-cli` as what has since been confirmed correct. `plan/overview.md`'s "Current status" and "Flagged for manager" sections, and every phase-01 task document, have been amended to target `core-cli` throughout; this notes file has not been rewritten to match, so its own prose still reads as it did at the moment of discovery.
+
 ## npm — confirmed as assumed
 
 - `npm view sdlcpilot-cli` resolves: published **unscoped**, `sdlcpilot-cli@1.0.0-alpha.10`, homepage `https://github.com/liquid-labs/sdlcpilot-cli#readme`. `npm view @liquid-labs/sdlcpilot-cli` 404s. This confirms the dispatch's framing: the package was never actually published under `@liquid-labs/sdlcpilot-cli` despite `package.json`'s `_comply.orgKey: "@liquid-labs"` implying that scope.
