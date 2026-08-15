@@ -27,7 +27,8 @@ phases:
           tier: sonnet-low
           git:
             branch: plan/sdlcpilot-cli-rename-01-002
-            commit: []
+            commit:
+                - 8b0c77d
             merge: null
         - number: 3
           slug: rename-build-artifacts-and-fix-self-references
