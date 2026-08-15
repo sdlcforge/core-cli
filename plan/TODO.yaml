@@ -13,6 +13,7 @@ phases:
           path: phase-01-rename-relocation/001-rename-github-repository.md
           done: false
           tier: sonnet-low
+          digest: Independently re-verified sdlcforge/core-cli is live/correct, no stray sdlc-cli exists, origin remote already repointed to sdlcforge/core-cli. No mutating gh command run, no repository files touched.
           git:
             branch: plan/sdlcpilot-cli-rename-01-001
             commit:
