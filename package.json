@@ -1,10 +1,10 @@
 {
-  "name": "sdlcpilot-cli",
+  "name": "@sdlcforge/core-cli",
   "version": "1.0.0-alpha.10",
   "description": "Command line interface for SDLCPilot, a Software Development Life Cycle management tool.",
-  "main": "dist/sdlcpilot-cli.js",
+  "main": "dist/core-cli.js",
   "bin": {
-    "sdlc": "dist/sdlcpilot-cli.js"
+    "sdlc": "dist/core-cli.js"
   },
   "files": [
     "dist/*"
@@ -22,13 +22,13 @@
   "author": "Zane Rockenbaugh <zane@liquid-labs.com>",
   "license": "UNLICENSED",
   "repository": {
-    "url": "git+ssh://git@github.com/liquid-labs/sdlcpilot-cli.git",
+    "url": "git+ssh://git@github.com/sdlcforge/core-cli.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/liquid-labs/sdlcpilot-cli/issues"
+    "url": "https://github.com/sdlcforge/core-cli/issues"
   },
-  "homepage": "https://github.com/liquid-labs/sdlcpilot-cli#readme",
+  "homepage": "https://github.com/sdlcforge/core-cli#readme",
   "dependencies": {
     "@liquid-labs/comply-defaults": "^1.0.0-alpha.8",
     "@liquid-labs/plugable-defaults": "^1.0.0-alpha.4",
@@ -38,6 +38,6 @@
     "@liquid-labs/catalyst-scripts-node-project": "^1.0.0-alpha.22"
   },
   "_comply": {
-    "orgKey": "@liquid-labs"
+    "orgKey": "@sdlcforge"
   }
 }
