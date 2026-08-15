@@ -48,16 +48,6 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: Lockfile regeneration re-resolved several @liquid-labs/* and transitive dev dependencies to newer semver-compatible versions (e.g. comply-defaults alpha.8->alpha.9, plugable-defaults alpha.4->alpha.7) as a side effect of full reinstall rather than a prior-lockfile baseline. Within task's bun.lock scope but flagging as a side effect beyond the literal name-field change.
-    - title: make lint fails on 2 pre-existing errors in s
-      id: dd6K
-      date: "2026-08-15"
-      tags:
-        - type:ambiguity
-        - plan/phase:rename-relocation
-        - plan/slug:sdlcpilot-cli-rename
-        - priority:unspecified
-        - effort:unspecified
-      text: make lint fails on 2 pre-existing errors in spike/bun-compat/harness-raw-childprocess.mjs (quote style) and spike/bun-compat/harness.mjs (unused execFileSync import) - trivial, mechanical, out of this task's diff scope, candidate for a quick separate fix.
     - title: npm publish never attempted (blocked behind t
       id: 3Azo
       date: "2026-08-15"
