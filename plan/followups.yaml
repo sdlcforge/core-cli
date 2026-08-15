@@ -48,16 +48,6 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: Lockfile regeneration re-resolved several @liquid-labs/* and transitive dev dependencies to newer semver-compatible versions (e.g. comply-defaults alpha.8->alpha.9, plugable-defaults alpha.4->alpha.7) as a side effect of full reinstall rather than a prior-lockfile baseline. Within task's bun.lock scope but flagging as a side effect beyond the literal name-field change.
-    - title: npm publish never attempted (blocked behind t
-      id: 3Azo
-      date: "2026-08-15"
-      tags:
-        - type:ambiguity
-        - plan/phase:rename-relocation
-        - plan/slug:sdlcpilot-cli-rename
-        - priority:unspecified
-        - effort:unspecified
-      text: npm publish never attempted (blocked behind the above); npm whoami also returns 401 in this environment - credential refresh will be needed once test/lint are unblocked.
     - title: 'npm publish --access public --tag alpha must '
       id: oI9z
       date: "2026-08-15"
