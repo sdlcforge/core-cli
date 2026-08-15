@@ -54,7 +54,7 @@ phases:
             branch: plan/sdlcpilot-cli-rename-01-004
             commit:
                 - f8bd2e6
-            merge: null
+            merge: 268483010967bfa651ed15f400272ff1fc4310e4
         - number: 5
           slug: relocate-project-directory
           title: Relocate Project Directory
