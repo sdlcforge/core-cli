@@ -18,7 +18,7 @@ phases:
             branch: plan/sdlcpilot-cli-rename-01-001
             commit:
                 - 3706f63
-            merge: null
+            merge: 2b1642c6d25373b8a6ef27479d2425ca688483ed
         - number: 2
           slug: update-package-identity-and-urls
           title: Update Package Identity and Repository URLs
