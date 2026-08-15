@@ -88,3 +88,13 @@ items:
         - priority:unspecified
         - effort:unspecified
       text: Task 5 (directory relocation) depends on task 4 completing - plan execution is paused here pending a decision on the PLUGABLE_REGISTRY break.
+    - title: 'npm publish --access public --tag alpha must '
+      id: oI9z
+      date: "2026-08-15"
+      tags:
+        - type:ambiguity
+        - plan/phase:rename-relocation
+        - plan/slug:sdlcpilot-cli-rename
+        - priority:unspecified
+        - effort:unspecified
+      text: npm publish --access public --tag alpha must be run manually from /Users/zane/playground/liquid-labs/sdlcpilot-cli/worktrees/plan/sdlcpilot-cli-rename-01-004 - blocked by the Claude Code permission classifier, not attempted as a workaround. Note --tag alpha is newly required for this prerelease version, not in the original task doc.
